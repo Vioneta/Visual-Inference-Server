@@ -1,5 +1,6 @@
 [property]
 gpu-id=0
+filter-out-class-ids=0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;48;52;53;54;55;56;57;58;59;60;61;62;63;64;65;66;67;68;69;70;71;72;73;74;75;76;77;78;79
 net-scale-factor=0.0039215697906911373
 model-color-format=0
 onnx-file=yolov7.onnx
@@ -26,3 +27,8 @@ engine-create-func-name=NvDsInferYoloCudaEngineGet
 nms-iou-threshold=0.45
 pre-cluster-threshold=0.25
 topk=300
+
+
+## Per class configuration
+#[class-attrs-0]
+#threshold=100

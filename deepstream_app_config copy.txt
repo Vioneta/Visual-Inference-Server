@@ -78,6 +78,7 @@ sync=0
 gpu-id=0
 nvbuf-memory-type=0
 
+
 [osd]
 enable=1
 gpu-id=0
@@ -113,12 +114,12 @@ config-file=config_infer_primary_yoloV7.txt
 
 [tracker]
 enable=1
-tracker-width=640
-tracker-height=480
+tracker-width=720
+tracker-height=640
 gpu-id=0
 ll-lib-file=/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
-ll-config-file=config_tracker_NvDCF_max_perf.yml
-enable-past-frame=1
+ll-config-file=./config_tracker_DeepSORT.yml
+#enable-past-frame=1
 enable-batch-process=1
 
 [tests]
