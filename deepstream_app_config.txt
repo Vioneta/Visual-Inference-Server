@@ -20,14 +20,6 @@ gpu-id=0
 cudadec-memtype=0
 
 
-[sink0]
-enable=1
-type=2
-sync=0
-gpu-id=0
-nvbuf-memory-type=0
-
-
 [source1]
 enable=1
 type=3
@@ -35,15 +27,6 @@ uri=file:////home/charith/Vioneta-Ai/Product/DeepStream-Yolo/videos/orange.mp4
 num-sources=1
 gpu-id=0
 cudadec-memtype=0
-
-
-[sink1]
-enable=1
-type=2
-sync=0
-gpu-id=0
-nvbuf-memory-type=0
-
 
 
 [source2]
@@ -55,13 +38,6 @@ gpu-id=0
 cudadec-memtype=0
 
 
-[sink2]
-enable=1
-type=2
-sync=0
-gpu-id=0
-nvbuf-memory-type=0
-
 [source3]
 enable=1
 type=3
@@ -71,12 +47,32 @@ gpu-id=0
 cudadec-memtype=0
 
 
-[sink3]
+[sink0]
 enable=1
 type=2
 sync=0
 gpu-id=0
 nvbuf-memory-type=0
+
+[sink1]
+enable=1
+#Type - 1=FakeSink 2=EglSink 3=File 4=UDPSink 5=nvoverlaysink 6=MsgConvBroker
+type=6
+msg-conv-config=msgconv_sample_config.txt
+#(0): PAYLOAD_DEEPSTREAM - Deepstream schema payload
+#(1): PAYLOAD_DEEPSTREAM_MINIMAL - Deepstream schema payload minimal
+#(256): PAYLOAD_RESERVED - Reserved type
+#(257): PAYLOAD_CUSTOM   - Custom schema payload
+msg-conv-payload-type=0
+# plain text MQTT
+msg-broker-proto-lib=/opt/nvidia/deepstream/deepstream/lib/libnvds_mqtt_proto.so
+#Provide your msg-broker-conn-str here
+msg-broker-conn-str=127.0.0.1;1883;edgex/AnalyticsData
+topic=edgex/AnalyticsData
+#Optional:
+msg-broker-config=cfg_mqtt.txt
+
+
 
 [osd]
 enable=1
@@ -118,8 +114,11 @@ tracker-height=480
 gpu-id=0
 ll-lib-file=/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
 ll-config-file=config_tracker_NvDCF_max_perf.yml
-enable-past-frame=1
-enable-batch-process=1
+#enable-past-frame=1
+#enable-batch-process=1
+
+
 
 [tests]
 file-loop=0
+
